@@ -31,6 +31,7 @@ Vagrant.configure("2") do |config|
   	end
   end
 
+
   config.vm.define :node3 do |node3_config|
   	node3_config.vm.box = 'centos6'
   	node3_config.vm.box_url = 'https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box' 
@@ -44,6 +45,5 @@ Vagrant.configure("2") do |config|
   		node3_puppet.module_path= "modules"
   	end
   end
-  
 
 end

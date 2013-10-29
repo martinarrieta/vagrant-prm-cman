@@ -1,0 +1,17 @@
+# The following options will be passed to all MySQL clients
+[client]
+#password       = your_password
+port            = 3306
+socket          = /var/lib/mysql/mysql.sock
+
+# The MySQL server
+[mysqld]
+port            = 3306
+socket          = /var/lib/mysql/mysql.sock
+
+# Uncomment the following if you want to log updates
+log-bin=mysql-bin
+
+# binary logging format - mixed recommended
+binlog_format=ROW
+server-id	= <%= scope.lookupvar('::ipaddress_eth1').dup.sub!(/\d{1,3}\.\d{1,3}\.(\d{1,3})\.(\d{1,3})/,'\1\2') %>

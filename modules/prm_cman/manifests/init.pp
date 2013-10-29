@@ -61,4 +61,20 @@ class prm_cman( ) {
     require => Service["cman"]
   }
   
+  file { "my.cnf":
+    path => "/etc/my.cnf",
+    ensure => file,
+    owner => root,
+    group => root,
+    mode  => 644,
+    content => template("prm_cman/my.cnf.erb"),
+    require => Package["Percona-Server-server-55"],
+  }  
+  
+  service { "mysql":
+    enable => true,
+    ensure => running,
+    require => File["my.cnf"],
+  }
+  
 }
